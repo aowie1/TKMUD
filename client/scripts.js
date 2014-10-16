@@ -1,5 +1,18 @@
-var socket = new WebSocket('url'),
+var socket,
     message;
+
+try {
+    socket = new WebSocket('url');
+} catch (e) {
+    console.error(e.message);
+    socket = {
+        onopen: function () {},
+        onmessage: function () {},
+        send: function (message) {
+            console.log(message);
+        }
+    };
+}
 
 socket.onopen(function (event) {
     console.log('socket open');
@@ -25,8 +38,16 @@ Message.prototype.setUser = function (user) {
     return this;
 };
 
-message = new Message();
-message.setCommand('LOGIN');
-message.setUser('someone');
+document.querySelector('.login').onclick = function (e) {
+    var username;
 
-socket.send(message);
+    e.preventDefault();
+
+    username = document.querySelector('#username').value;
+
+    message = new Message();
+    message.setCommand('LOGIN');
+    message.setUser(username);
+
+    socket.send(message);
+}
