@@ -1,0 +1,25 @@
+{
+    "name": "aowie1/TKMUD",
+    "type": "application",
+    "description": "Worst MUD ever!",
+    "keywords": [],
+    "homepage": "https://github.com/aowie1/TKMUD",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Xander Guzman",
+            "email": "xander.guzman@xanderguzman.com",
+            "homepage": "http://www.xanderguzman.com",
+            "role": "code monkey"
+        }
+    ],
+    "require": {
+        "php": ">=5.5.0",
+        "react/react": "0.4.*"
+    },
+    "autoload": {
+        "psr-4" : {
+            "TkMud\\": "src/TkMud"
+        }
+    }
+}
